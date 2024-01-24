@@ -32,7 +32,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-By default, Elsa will use the following connection string when using SQLite: `"Data Source=elsa.sqlite.db;Cache=Shared;"`.
+By default, Elsa will use the following connection string when using SQLite: `"Data Source=elsa.sqlite;Cache=Shared;"`.
 You can override this by importing the `Microsoft.EntityFrameworkCore` namespace to make available the default `UseSqlite()` extension method that accepts a connection string. Example:
 
 ```c#
@@ -40,7 +40,7 @@ using Microsoft.EntityFrameworkCore;
 
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddElsa(options => options.UseEntityFrameworkPersistence(ef => ef.UseSqlite("Data Source=my-db-name.db;Cache=Shared;")));
+    services.AddElsa(options => options.UseEntityFrameworkPersistence(ef => ef.UseSqlite("Data Source=my-db-name.sqlite;Cache=Shared;")));
 }
 ```
 
@@ -138,7 +138,7 @@ Follow these steps to apply the migrations on a new *Sqlite* database for exampl
 1. Add the `Microsoft.EntityFrameworkCore.Design` package to your startup project.
 2. Add `Elsa.Persistence.EntityFramework.Core`
 3. Create a class called e.g. `SqliteElsaContextFactory` (implementation below).
-4. Run the following command: `dotnet ef database update -- ConnectionStrings:Elsa="Data Source=elsa.sqlite.db;Cache=Shared;"`
+4. Run the following command: `dotnet ef database update -- ConnectionStrings:Elsa="Data Source=elsa.sqlite;Cache=Shared;"`
 
 The `SqliteElsaContextFactory` class looks like this:
 

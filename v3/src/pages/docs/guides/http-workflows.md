@@ -92,7 +92,7 @@ builder.Services.AddElsa(elsa =>
     elsa.UseIdentity(identity =>
     {
         identity.UseAdminUserProvider();
-        identity.TokenOptions = tokenOptions => tokenOptions.SigningKey = "my-long-256-bit-secret-token-signing-key";
+        identity.TokenOptions = tokenOptions => tokenOptions.SigningKey = "018cec60-06c1-7f08-ab16-d1ed4230bcc7";
     });
     elsa.UseDefaultAuthentication();
     elsa.UseWorkflowManagement(management => management.UseEntityFrameworkCore());

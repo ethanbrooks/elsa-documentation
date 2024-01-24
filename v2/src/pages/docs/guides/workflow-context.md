@@ -112,7 +112,7 @@ namespace ElsaGuides.WorkflowContexts.Web.Data
         public BlogContext CreateDbContext(string[] args)
         {
             var builder = new DbContextOptionsBuilder<BlogContext>();
-            var connectionString = args.Any() ? args[0] : "Data Source=blog.db;Cache=Shared";
+            var connectionString = args.Any() ? args[0] : "Data Source=blog.sqlite;Cache=Shared";
             
             builder.UseSqlite(connectionString, db => db
                 .MigrationsAssembly(typeof(SqliteBlogContextFactory).Assembly.GetName().Name));
@@ -134,7 +134,7 @@ dotnet ef migrations add Initial -c BlogContext -o Data/Migrations
 At this point, we could go ahead and create the SQLite database by running the following command: 
 
 ```bash
-dotnet ef database update -- "Data Source=blog.db;Cache=Shared"
+dotnet ef database update -- "Data Source=blog.sqlite;Cache=Shared"
 ```
 
 That would be fine, and is usually the right thing to do. But if you for whatever reason prefer to automatically run migrations during application startup, you can create a new class that implements `IStartupTask`, which is a feature provided by Elsa and will be executed during application startup.
@@ -336,7 +336,7 @@ Before we can run the application, update `appsettings.json` with the following:
 ```json
 {
   "ConnectionStrings": {
-    "Sqlite": "Data Source=blog.db;Cache=Shared"
+    "Sqlite": "Data Source=blog.sqlite;Cache=Shared"
   }
 }
 ```

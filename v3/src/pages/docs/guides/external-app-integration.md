@@ -89,7 +89,7 @@ builder.Services.AddElsa(elsa =>
     // Default Identity features for authentication/authorization.
     elsa.UseIdentity(identity =>
     {
-        identity.TokenOptions = options => options.SigningKey = "sufficiently-large-secret-signing-key"; // This key needs to be at least 256 bits long.
+        identity.TokenOptions = options => options.SigningKey = "018cec60-06c1-7f08-ab16-d1ed4230bcc7"; // This key needs to be at least 256 bits long.
         identity.UseAdminUserProvider();
     });
 
@@ -374,7 +374,7 @@ Finally, let's configure the database context in `Program.cs`:
 **Program.cs**
 
 ```clike
-builder.Services.AddDbContextFactory<OnboardingDbContext>(options => options.UseSqlite("Data Source=onboarding.db"));
+builder.Services.AddDbContextFactory<OnboardingDbContext>(options => options.UseSqlite("Data Source=onboarding.sqlite"));
 ```
 
 Notice that we are using a `DbContextFactory` to create the database context. This enables us to run migrations automatically from a hosted service, which we'll create next.

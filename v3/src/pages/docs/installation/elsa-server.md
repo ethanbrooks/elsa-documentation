@@ -55,7 +55,7 @@ builder.Services.AddElsa(elsa =>
     // Default Identity features for authentication/authorization.
     elsa.UseIdentity(identity =>
     {
-        identity.TokenOptions = options => options.SigningKey = "sufficiently-large-secret-signing-key"; // This key needs to be at least 256 bits long.
+        identity.TokenOptions = options => options.SigningKey = "018cec60-06c1-7f08-ab16-d1ed4230bcc7"; // This key needs to be at least 256 bits long.
         identity.UseAdminUserProvider();
     });
     
@@ -135,4 +135,4 @@ With your Elsa Server up and running, you can now proceed to [create an Elsa Stu
 
 ## Summary
 
-In this guide, we walked through the steps to set up an Elsa Server. You can see the final result and more details [here](https://github.com/elsa-workflows/elsa-guides/tree/main/src/installation/elsa-server/ElsaServer).
+In this guide, we walked through the steps to set up an Elsa Server. You can see the final result and more details [here](https://github.com/elsa-workflows/elsa-guides/tree/main/src/src/guides/workflow-client-app/ElsaServer).
